@@ -1,37 +1,33 @@
-function ListNode(val) {
-  this.val = val;
-  this.next = null;
-}
+function simulate() {
+  const vals = document.getElementById('values').value.split(',').map(x => parseInt(x));
+  const pos = parseInt(document.getElementById('pos').value);
+  const nodes = vals.map(v => ({ val: v, next: null }));
 
-function hasCycle(head) {
-  let slow = head;
-  let fast = head;
-  let steps = [];
+  for (let i = 0; i < nodes.length - 1; i++) {
+    nodes[i].next = nodes[i + 1];
+  }
+
+  if (pos >= 0) {
+    nodes[nodes.length - 1].next = nodes[pos];
+  }
+
+  let slow = nodes[0], fast = nodes[0], steps = [], step = 0;
 
   while (fast && fast.next) {
     slow = slow.next;
     fast = fast.next.next;
-    steps.push(`slow at ${slow.val}, fast at ${fast.val}`);
+    step++;
+    steps.push(`Step ${step}: slow at ${slow?.val}, fast at ${fast?.val}`);
+
     if (slow === fast) {
-      steps.push("Cycle detected!");
-      return { result: true, steps };
+      steps.push(`✅ Cycle detected at node ${slow.val}`);
+      break;
     }
   }
-  steps.push("No cycle found.");
-  return { result: false, steps };
-}
 
-function runDemo() {
-  const a = new ListNode(3);
-  const b = new ListNode(2);
-  const c = new ListNode(0);
-  const d = new ListNode(-4);
+  if (!fast || !fast.next) {
+    steps.push("❌ No cycle detected.");
+  }
 
-  a.next = b;
-  b.next = c;
-  c.next = d;
-  d.next = b; // cycle here!
-
-  const { result, steps } = hasCycle(a);
-  document.getElementById("output").textContent = steps.join("\n");
+  document.getElementById("result").innerText = steps.join("\n");
 }
