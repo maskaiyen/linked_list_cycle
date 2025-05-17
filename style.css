@@ -1,0 +1,33 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 20px;
+  background: #f5f5f5;
+}
+.input-area {
+  margin-bottom: 20px;
+}
+svg {
+  border: 1px solid #ccc;
+  background: #fff;
+}
+.node {
+  fill: #4CAF50;
+  stroke: #333;
+}
+.text {
+  fill: white;
+  font-size: 12px;
+}
+.log {
+  margin-top: 20px;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-family: monospace;
+  white-space: pre-wrap;
+}
