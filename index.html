@@ -40,6 +40,15 @@
       <div class="col-md-6">
         <button onclick="simulate()" class="btn btn-primary me-2">Run</button>
         <button onclick="reset()" class="btn btn-secondary">Reset</button>
+        <select id="speed" class="form-select d-inline w-auto me-2">
+          <option value="1000">慢速</option>
+          <option value="500" selected>中速</option>
+          <option value="200">快速</option>
+        </select>
+        
+        <button onclick="stepOnce()" class="btn btn-outline-success me-2">下一步</button>
+        <button onclick="togglePause()" class="btn btn-warning" id="pauseBtn">Pause</button>
+
       </div>
     </div>
     <svg id="visualization" width="100%" height="300">
