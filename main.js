@@ -87,4 +87,6 @@ function simulate() {
   }
 
   document.getElementById("result").innerText = steps.join("\n");
+
+  drawLinkedList(nodes);
 }
